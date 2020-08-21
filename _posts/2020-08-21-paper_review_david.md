@@ -10,7 +10,7 @@
 
 최신 알고리즘(KITTIbenchmark 기준) 중에 car detection 성능(3D average precision) 을 높이기 위해 LiDAR 와 monocular 이미지 데이터를 사용한 센서 퓨전을 통하여 66% AP에서 73% AP로 올렸다고 주장하고 있습니다. 대조적으로 이미지 기반의 3D deteciton 성능은 10% AP 라고 합니다. 이것에 대한 원인은 이미지 기반의 depth estimation일 수 있습니다. 
 
-![fig_1](img\fig_1.png)
+![fig_1](https://github.com/DavidKo3/DavidKo3.github.io/blob/master/_posts/img/fig_1.png)
 
 위의 그림 1(Figure 1) 를 보시면 LiDAR로 생성된 3D point cloud 데이터와 이미지 기반 최신 stereo depth estimation으로 생성된 pseudo-LiDAR 데이터가 매우 유사하게 일치하는 것(심지어 먼 거리에 있는 물체도 포함)을 확인 할 수 있습니다.
 
@@ -38,25 +38,25 @@ image based 3D object detection의 많은 장점에도 불구하고, 이미지�
 
 
 
-![fig_2](img\fig_2.png)
+![fig_2](https://github.com/DavidKo3/DavidKo3.github.io/blob/master/_posts/img/fig_2.png)
 
 ### 1. Depth estimation
 
  Depth estimation으로 구해지는 depth map D는 다음과 같이 설명되어 있습니다. 자세한 사항은 본 논문과 기타 stereo matching  및 disparity estimation 관련 논문을 참고하시면 좋겠습니다.
 
-![disparity](img\disparity.png)
+![disparity](https://github.com/DavidKo3/DavidKo3.github.io/blob/master/_posts/img/disparity.png)
 
 ### 2. Pseudo-LiDAR generation
 
 각각의 pixel (u, v) 에 대한 3D 좌표 (x,y, z) 값은 다음과 같이 구합니다.
 
-![real_3d_coordinate](img\real_3d_coordinate.png)
+![real_3d_coordinate](https://github.com/DavidKo3/DavidKo3.github.io/blob/master/_posts/img/real_3d_coordinate.png)
 
 
 
 이런 방식으로 depth-map에 포함된 모든 픽셀에 대한 3D 좌표정보(x,y,z)를 추출하여 3D point cloud 데이터를 복원 할 수 있습니다. 
 
-![projection_3d_lidar](img\projection_3d_lidar.png)
+![projection_3d_lidar](https://github.com/DavidKo3/DavidKo3.github.io/blob/master/_posts/img/projection_3d_lidar.png)
 
 우리는 이러한 **3D point cloud 를 pseudo-LiDAR signa**l로 명명하겠습니다.
 
@@ -72,11 +72,11 @@ Depth estimation 은 pyramid stereo matching network(PSMNet) 을 사용합니다
 
 첫 번째 방법에서는 **pseudoi-LiDAR 데이터를 3D point cloud**로 다루었습니다. 여기서 frustum PointNet 방식은 2D object detection을 3D 상의 frustum으로 사영(projection) 한 다음, 각각의 3D frustum에서 point-set를 추출하기 위하여 PointNet를 적용합니다. 
 
-![4_3d_object_dection_frustum](img\4_3d_object_dection_frustum.png)
+![4_3d_object_dection_frustum](https://github.com/DavidKo3/DavidKo3.github.io/blob/master/_posts/img/4_3d_object_dection_frustum.png)
 
 두 번째 방법에서는 **Bird`s Eye View(BEV, 조감도) 관점에서 pseudo-LiDAR 정보**를 표현 하였습니다. 특히 3D 정보들이 top-down view 에서 2D 이미지로 변환 되었습니다. Width와 Depth정보는 spatial dimension으로 변환 되었고 height 정보는 색상의 채널공간으로 변환 되었습니다. 다음 그림을 확인하시면 이 과정을 쉽게 이해할 수 있습니다.  이러한 BEV 데이터는 AVOD 알고리즘을 사용하였습니다.
 
-![4_3d_object_detection_BEV](img\4_3d_object_detection_BEV.png)
+![4_3d_object_detection_BEV](https://github.com/DavidKo3/DavidKo3.github.io/blob/master/_posts/img/4_3d_object_detection_BEV.png)
 
 
 
@@ -86,7 +86,7 @@ Depth estimation 은 pyramid stereo matching network(PSMNet) 을 사용합니다
 
 이와 대조적으로 point cloud 데이터(3D points) 에 3D convolution을 적용하거나 birds's-eye view slices(BEV, 2D points)의 pixel에 2D convolution를 적용하는 경우는 실제 물리적으로 픽셀 영역이 가까운 부분들입니다. 따라서 이러한 경우의 operation들은 실제 물리적으로 의미가 있고  학습이 더 잘 되거나 정확한 모델을 구성할 수 있습니다. 이러한 점을 확인하기 위해서 그림 3(Figure 3) 과 같은 상황을 가정해서 실험을 진행 하였습니다. 즉 depth-map에 직접 2d convolution 을 적용해 본 것 입니다.
 
-   ![5_representation_matters](img\5_representation_matters.png)
+   ![5_representation_matters](https://github.com/DavidKo3/DavidKo3.github.io/blob/master/_posts/img/5_representation_matters.png)
 
 
 
@@ -134,17 +134,17 @@ Depth estimation 은 pyramid stereo matching network(PSMNet) 을 사용합니다
 
 실험의 핵심적인 부분이 다음의 표 1(Table 1)에 정리 되어 있습니다. 현재는 KITTI 데이터셋을 기준으로 모델의 validation 단계 입니다.
 
-![6_experiment_table_1](img\6_experiment_table_1.png)
+![6_experiment_table_1](https://github.com/DavidKo3/DavidKo3.github.io/blob/master/_posts/img/6_experiment_table_1.png)
 
 
 
 파란색 으로 표시된 부분이 depth-map을 pseudo-LiDAR로 변환 한 후 3D object detection을 수행한 결과 입니다.  pseudo-LiDAR 데이터로 변환(3D cloud points, 2D BEV points)한 후 검출한 경우에 모두 성능이 올라간 것을 확인 할 수 있습니다.
 
-![6_experimant_results_table_2](img\6_experimant_results_table_2.png)
+![6_experimant_results_table_2](https://github.com/DavidKo3/DavidKo3.github.io/blob/master/_posts/img/6_experimant_results_table_2.png)
 
 표 2(Table 2) 에서 보면 Frontal 데이터(2D depth-map) 와 pseudo-LiDAR 데이터를 입력으로 했을 때 3D object detection 결과에서 저자들의 데이터 Representaion 방식 (pseudo-LiDAR)으로 검출 성능이 월등히 향상됨을 확인 할 수 있었습니다.
 
-![6_experiment_results_table_3](img\6_experiment_results_table_3.png)
+![6_experiment_results_table_3](https://github.com/DavidKo3/DavidKo3.github.io/blob/master/_posts/img/6_experiment_results_table_3.png)
 
 
 
@@ -152,13 +152,13 @@ Depth estimation 은 pyramid stereo matching network(PSMNet) 을 사용합니다
 
 
 
-![6_experiment_table_4](img\6_experiment_table_4.png)
+![6_experiment_table_4](https://github.com/DavidKo3/DavidKo3.github.io/blob/master/_posts/img/6_experiment_table_4.png)
 
 표 4(Figure 4)에서는 LiDAR , Mono depth-map 과 pseudo-LiDAR를 사용한 pedestrian과 cyclist의 3D object detection의 비교입니다. 
 
 ## 7. Experiments results on test set
 
-![6_experiment_table_5](img\6_experiment_table_5.png)
+![6_experiment_table_5](https://github.com/DavidKo3/DavidKo3.github.io/blob/master/_posts/img/6_experiment_table_5.png)
 
 표 5(Figure 5) 에서는 test 수행시 car를 카테고리로 정하여 서로 다른 3D object detection 알고리즘에 대해서 실험한 결과입니다.
 
@@ -168,23 +168,23 @@ validation set 경우의 pseudo-LiDAR와 LiDAR의 유사한 성능 차이에서 
 
  결과 시각화를 그림 4(Figure 4)에 제시하였습니다.
 
-![8_visualization_figure_4](img\8_visualization_figure_4.png)
+![8_visualization_figure_4](https://github.com/DavidKo3/DavidKo3.github.io/blob/master/_posts/img/8_visualization_figure_4.png)
 
 정성적 비교를 위하여 LiDAR 데이터 기반(왼쪽 칼럼), pseudo-LiDAR 기반 (중앙 칼럼) , frontal stereo 기반(오른쪽 칼럼)에 표시되어 있습니다. Ground-Truth Box 위치는 빨강색(red), 검출 결과는 녹색(green)으로 표시되어 있습니다. 육안으로 봐도 LiDAR와 pseudo-LiDAR 기반의 검출은 가까운 물체에서는 매우 정확히 일치하고 있습니다. 하지만 **거리가 먼 영역의 검출에서는 depth estimation 이 부정확(저화질 영상에서 먼 거리의 object pixel 정보가 매우 빈약하게 수집**)하여 pseudo-LiDAR 기반 검출이 실패하고 있음을 확인할 수 있습니다. 또한 Stereo 방식의 frontal-view-based 검출에서는 가까운 영역에서조차 검출이 부정확함을 알 수 있습니다.
 
-![8_visualization_figure_5](img\8_visualization_figure_5.png)
+![8_visualization_figure_5](https://github.com/DavidKo3/DavidKo3.github.io/blob/master/_posts/img/8_visualization_figure_5.png)
 
 그림 5(Figure 5) 의 오른쪽 이미지에서 pseudo-LiDAR(파란색) 와 LiDAR(노란색)으로 표시되어 잇습니다. 이 결과에서는 pseudo-LiDAR 와 LiDAR points가 상당히 일치 하는 것으로 보입니다. 특히 pseudo-LiDAR 데이터(파란색)가 더 dense 하게 추출되어 있음을 확인 할 수 있습니다.
 
-![image-20200727133723093](img\fig_6.png)
+![image-20200727133723093](https://github.com/DavidKo3/DavidKo3.github.io/blob/master/_posts/img/fig_6.png)
 
 그림 6(Figure 6)에서는 서로 다른 depth estimation (PSMNET, PSMNet* )로 depth-map을 추출한후 pseudo-LiDAR를 비교한 것입니다. PSMNet의 pseudo-LiDAR 데이터가 거리가 먼 경우에 더 큰 편차(larger deviation)를 갖고 있는 것을 확인 할 수 있습니다.
 
-![8_visualziation_figure_7](img\8_visualziation_figure_7.png)
+![8_visualziation_figure_7](https://github.com/DavidKo3/DavidKo3.github.io/blob/master/_posts/img/8_visualziation_figure_7.png)
 
 그림 7 (Figure 7)에서는 검출이 실패하는 경우를 확인 할 수 있습니다. 회색 화살표 영역은 잘 못 검출된 (mislocalization) 부분 이고, 노란색 화살표 영역이 미검출(missed detection) 상황입니다. 오른쪽 아래결과(frontal-view approach) 에서는 가까운 영역에서 조차 검출이 잘못 되고 있음을 알 수 있습니다. 
 
-![figure_9](img\figure_9.png)
+![figure_9](https://github.com/DavidKo3/DavidKo3.github.io/blob/master/_posts/img/figure_9.png)
 
 그림 9 (Figure 9) 에서는 **object occlusion**이 있는 경우 입니다. 오른쪽 아래 이미지에서 노랑색 화살표 부분의 partially occluded 차량 부분에서는 pseudo-LiDAR based 알고리즘의 검출이 실패한 것을 확인할 수 있습니다. 왜냐하면 stereo matching으로 depth estimation을 수행 할 때 object의 occlusion 상황에서는 depth estimation 이 잘 안되기 때문입니다. 반대로 LiDAR 데이터 의 경우에는 object가 잘 검출 되어 있음을 알 수 있습니다.  **순수한 이미지 기반 알고리즘을 사용할 때 object occlusion 상황에서는 정확도가 낮아질 수 있다**고 판단됩니다.
 
