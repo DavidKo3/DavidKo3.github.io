@@ -72,7 +72,7 @@ Depth estimation 은 pyramid stereo matching network(PSMNet) 을 사용합니다
 
 첫 번째 방법에서는 **pseudoi-LiDAR 데이터를 3D point cloud**로 다루었습니다. 여기서 frustum PointNet 방식은 2D object detection을 3D 상의 frustum으로 사영(projection) 한 다음, 각각의 3D frustum에서 point-set를 추출하기 위하여 PointNet를 적용합니다. 
 
-![4_3d_object_dection_frustum](C:\paper_review\img\4_3d_object_dection_frustum.png)
+![4_3d_object_dection_frustum](img\4_3d_object_dection_frustum.png)
 
 두 번째 방법에서는 **Bird`s Eye View(BEV, 조감도) 관점에서 pseudo-LiDAR 정보**를 표현 하였습니다. 특히 3D 정보들이 top-down view 에서 2D 이미지로 변환 되었습니다. Width와 Depth정보는 spatial dimension으로 변환 되었고 height 정보는 색상의 채널공간으로 변환 되었습니다. 다음 그림을 확인하시면 이 과정을 쉽게 이해할 수 있습니다.  이러한 BEV 데이터는 AVOD 알고리즘을 사용하였습니다.
 
