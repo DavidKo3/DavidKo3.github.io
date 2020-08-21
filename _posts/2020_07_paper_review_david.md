@@ -10,7 +10,7 @@
 
 최신 알고리즘(KITTIbenchmark 기준) 중에 car detection 성능(3D average precision) 을 높이기 위해 LiDAR 와 monocular 이미지 데이터를 사용한 센서 퓨전을 통하여 66% AP에서 73% AP로 올렸다고 주장하고 있습니다. 대조적으로 이미지 기반의 3D deteciton 성능은 10% AP 라고 합니다. 이것에 대한 원인은 이미지 기반의 depth estimation일 수 있습니다. 
 
-![fig_1](img\fig_1.png)
+![fig_1](assets\img_1\fig_1.png)
 
 위의 그림 1(Figure 1) 를 보시면 LiDAR로 생성된 3D point cloud 데이터와 이미지 기반 최신 stereo depth estimation으로 생성된 pseudo-LiDAR 데이터가 매우 유사하게 일치하는 것(심지어 먼 거리에 있는 물체도 포함)을 확인 할 수 있습니다.
 
