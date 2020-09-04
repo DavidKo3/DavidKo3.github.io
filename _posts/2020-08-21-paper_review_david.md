@@ -10,7 +10,7 @@
 
 최신 알고리즘(KITTIbenchmark 기준) 중에 car detection 성능(3D average precision) 을 높이기 위해 LiDAR 와 monocular 이미지 데이터를 사용한 센서 퓨전을 통하여 66% AP에서 73% AP로 올렸다고 주장하고 있습니다. 대조적으로 이미지 기반의 3D deteciton 성능은 10% AP 라고 합니다. 이것에 대한 원인은 이미지 기반의 depth estimation일 수 있습니다. 
 
-![fig_1](assets/img_1/fig_1.png)
+![fig_1](/assets/img_1/fig_1.png)
 
 위의 그림 1(Figure 1) 를 보시면 LiDAR로 생성된 3D point cloud 데이터와 이미지 기반 최신 stereo depth estimation으로 생성된 pseudo-LiDAR 데이터가 매우 유사하게 일치하는 것(심지어 먼 거리에 있는 물체도 포함)을 확인 할 수 있습니다.
 
@@ -168,23 +168,23 @@ validation set 경우의 pseudo-LiDAR와 LiDAR의 유사한 성능 차이에서 
 
  결과 시각화를 그림 4(Figure 4)에 제시하였습니다.
 
-![8_visualization_figure_4](assets/img_1/8_visualization_figure_4.png)
+![8_visualization_figure_4](/assets/img_1/8_visualization_figure_4.png)
 
 정성적 비교를 위하여 LiDAR 데이터 기반(왼쪽 칼럼), pseudo-LiDAR 기반 (중앙 칼럼) , frontal stereo 기반(오른쪽 칼럼)에 표시되어 있습니다. Ground-Truth Box 위치는 빨강색(red), 검출 결과는 녹색(green)으로 표시되어 있습니다. 육안으로 봐도 LiDAR와 pseudo-LiDAR 기반의 검출은 가까운 물체에서는 매우 정확히 일치하고 있습니다. 하지만 **거리가 먼 영역의 검출에서는 depth estimation 이 부정확(저화질 영상에서 먼 거리의 object pixel 정보가 매우 빈약하게 수집**)하여 pseudo-LiDAR 기반 검출이 실패하고 있음을 확인할 수 있습니다. 또한 Stereo 방식의 frontal-view-based 검출에서는 가까운 영역에서조차 검출이 부정확함을 알 수 있습니다.
 
-![8_visualization_figure_5](assets/img_1/8_visualization_figure_5.png)
+![8_visualization_figure_5](/assets/img_1/8_visualization_figure_5.png)
 
 그림 5(Figure 5) 의 오른쪽 이미지에서 pseudo-LiDAR(파란색) 와 LiDAR(노란색)으로 표시되어 잇습니다. 이 결과에서는 pseudo-LiDAR 와 LiDAR points가 상당히 일치 하는 것으로 보입니다. 특히 pseudo-LiDAR 데이터(파란색)가 더 dense 하게 추출되어 있음을 확인 할 수 있습니다.
 
-![image-20200727133723093](assets/img_1/fig_6.png)
+![image-20200727133723093](/assets/img_1/fig_6.png)
 
 그림 6(Figure 6)에서는 서로 다른 depth estimation (PSMNET, PSMNet* )로 depth-map을 추출한후 pseudo-LiDAR를 비교한 것입니다. PSMNet의 pseudo-LiDAR 데이터가 거리가 먼 경우에 더 큰 편차(larger deviation)를 갖고 있는 것을 확인 할 수 있습니다.
 
-![8_visualziation_figure_7](assets/img_1/8_visualziation_figure_7.png)
+![8_visualziation_figure_7](/assets/img_1/8_visualziation_figure_7.png)
 
 그림 7 (Figure 7)에서는 검출이 실패하는 경우를 확인 할 수 있습니다. 회색 화살표 영역은 잘 못 검출된 (mislocalization) 부분 이고, 노란색 화살표 영역이 미검출(missed detection) 상황입니다. 오른쪽 아래결과(frontal-view approach) 에서는 가까운 영역에서 조차 검출이 잘못 되고 있음을 알 수 있습니다. 
 
-![figure_9](assets/img_1/figure_9.png)
+![figure_9](/assets/img_1/figure_9.png)
 
 그림 9 (Figure 9) 에서는 **object occlusion**이 있는 경우 입니다. 오른쪽 아래 이미지에서 노랑색 화살표 부분의 partially occluded 차량 부분에서는 pseudo-LiDAR based 알고리즘의 검출이 실패한 것을 확인할 수 있습니다. 왜냐하면 stereo matching으로 depth estimation을 수행 할 때 object의 occlusion 상황에서는 depth estimation 이 잘 안되기 때문입니다. 반대로 LiDAR 데이터 의 경우에는 object가 잘 검출 되어 있음을 알 수 있습니다.  **순수한 이미지 기반 알고리즘을 사용할 때 object occlusion 상황에서는 정확도가 낮아질 수 있다**고 판단됩니다.
 
