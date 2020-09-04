@@ -38,25 +38,25 @@ image based 3D object detection의 많은 장점에도 불구하고, 이미지�
 
 
 
-![fig_2](assets/img_1/fig_2.png)
+![fig_2](/assets/img_1/fig_2.png)
 
 ### 1. Depth estimation
 
  Depth estimation으로 구해지는 depth map D는 다음과 같이 설명되어 있습니다. 자세한 사항은 본 논문과 기타 stereo matching  및 disparity estimation 관련 논문을 참고하시면 좋겠습니다.
 
-![disparity](assets/img_1/disparity.png)
+![disparity](/assets/img_1/disparity.png)
 
 ### 2. Pseudo-LiDAR generation
 
 각각의 pixel (u, v) 에 대한 3D 좌표 (x,y, z) 값은 다음과 같이 구합니다.
 
-![real_3d_coordinate](assets/img_1/real_3d_coordinate.png)
+![real_3d_coordinate](/assets/img_1/real_3d_coordinate.png)
 
 
 
 이런 방식으로 depth-map에 포함된 모든 픽셀에 대한 3D 좌표정보(x,y,z)를 추출하여 3D point cloud 데이터를 복원 할 수 있습니다. 
 
-![projection_3d_lidar](assets/img_1/projection_3d_lidar.png)
+![projection_3d_lidar](/assets/img_1/projection_3d_lidar.png)
 
 우리는 이러한 **3D point cloud 를 pseudo-LiDAR signa**l로 명명하겠습니다.
 
@@ -72,11 +72,11 @@ Depth estimation 은 pyramid stereo matching network(PSMNet) 을 사용합니다
 
 첫 번째 방법에서는 **pseudoi-LiDAR 데이터를 3D point cloud**로 다루었습니다. 여기서 frustum PointNet 방식은 2D object detection을 3D 상의 frustum으로 사영(projection) 한 다음, 각각의 3D frustum에서 point-set를 추출하기 위하여 PointNet를 적용합니다. 
 
-![4_3d_object_dection_frustum](assets/img_1/4_3d_object_dection_frustum.png)
+![4_3d_object_dection_frustum](/assets/img_1/4_3d_object_dection_frustum.png)
 
 두 번째 방법에서는 **Bird`s Eye View(BEV, 조감도) 관점에서 pseudo-LiDAR 정보**를 표현 하였습니다. 특히 3D 정보들이 top-down view 에서 2D 이미지로 변환 되었습니다. Width와 Depth정보는 spatial dimension으로 변환 되었고 height 정보는 색상의 채널공간으로 변환 되었습니다. 다음 그림을 확인하시면 이 과정을 쉽게 이해할 수 있습니다.  이러한 BEV 데이터는 AVOD 알고리즘을 사용하였습니다.
 
-![4_3d_object_detection_BEV](assets/img_1/4_3d_object_detection_BEV.png)
+![4_3d_object_detection_BEV](/assets/img_1/4_3d_object_detection_BEV.png)
 
 
 
@@ -86,7 +86,7 @@ Depth estimation 은 pyramid stereo matching network(PSMNet) 을 사용합니다
 
 이와 대조적으로 point cloud 데이터(3D points) 에 3D convolution을 적용하거나 birds's-eye view slices(BEV, 2D points)의 pixel에 2D convolution를 적용하는 경우는 실제 물리적으로 픽셀 영역이 가까운 부분들입니다. 따라서 이러한 경우의 operation들은 실제 물리적으로 의미가 있고  학습이 더 잘 되거나 정확한 모델을 구성할 수 있습니다. 이러한 점을 확인하기 위해서 그림 3(Figure 3) 과 같은 상황을 가정해서 실험을 진행 하였습니다. 즉 depth-map에 직접 2d convolution 을 적용해 본 것 입니다.
 
-   ![5_representation_matters](assets/img_1/5_representation_matters.png)
+   ![5_representation_matters](/assets/img_1/5_representation_matters.png)
 
 
 
@@ -134,17 +134,17 @@ Depth estimation 은 pyramid stereo matching network(PSMNet) 을 사용합니다
 
 실험의 핵심적인 부분이 다음의 표 1(Table 1)에 정리 되어 있습니다. 현재는 KITTI 데이터셋을 기준으로 모델의 validation 단계 입니다.
 
-![6_experiment_table_1](assets/img_1/6_experiment_table_1.png)
+![6_experiment_table_1](/assets/img_1/6_experiment_table_1.png)
 
 
 
 파란색 으로 표시된 부분이 depth-map을 pseudo-LiDAR로 변환 한 후 3D object detection을 수행한 결과 입니다.  pseudo-LiDAR 데이터로 변환(3D cloud points, 2D BEV points)한 후 검출한 경우에 모두 성능이 올라간 것을 확인 할 수 있습니다.
 
-![6_experimant_results_table_2](assets/img_1/6_experimant_results_table_2.png)
+![6_experimant_results_table_2](/assets/img_1/6_experimant_results_table_2.png)
 
 표 2(Table 2) 에서 보면 Frontal 데이터(2D depth-map) 와 pseudo-LiDAR 데이터를 입력으로 했을 때 3D object detection 결과에서 저자들의 데이터 Representaion 방식 (pseudo-LiDAR)으로 검출 성능이 월등히 향상됨을 확인 할 수 있었습니다.
 
-![6_experiment_results_table_3](assets/img_1/6_experiment_results_table_3.png)
+![6_experiment_results_table_3](/assets/img_1/6_experiment_results_table_3.png)
 
 
 
@@ -152,13 +152,13 @@ Depth estimation 은 pyramid stereo matching network(PSMNet) 을 사용합니다
 
 
 
-![6_experiment_table_4](assets/img_1/6_experiment_table_4.png)
+![6_experiment_table_4](/assets/img_1/6_experiment_table_4.png)
 
 표 4(Figure 4)에서는 LiDAR , Mono depth-map 과 pseudo-LiDAR를 사용한 pedestrian과 cyclist의 3D object detection의 비교입니다. 
 
 ## 7. Experiments results on test set
 
-![6_experiment_table_5](assets/img_1/6_experiment_table_5.png)
+![6_experiment_table_5](/assets/img_1/6_experiment_table_5.png)
 
 표 5(Figure 5) 에서는 test 수행시 car를 카테고리로 정하여 서로 다른 3D object detection 알고리즘에 대해서 실험한 결과입니다.
 
