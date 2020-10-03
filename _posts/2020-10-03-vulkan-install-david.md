@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "2020-10-03_vulkan_install_david"
-date:   2020-10-03 12:14:35 +0900
+title:  "2020-10-03-vulkan-install-david"
+date:   2020-10-03 12:18:35 +0900
 categories: jekyll update
 ---
 
