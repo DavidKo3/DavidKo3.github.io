@@ -27,7 +27,7 @@ IDE 는  code-lite  를 사용합니다.
 
 cmd 환경에서 `pkg-config --cflags --libs vulkan` 명령을 실행하여 include 파일 위치와 library 파일 위치가 제대로 설정되어 있는지 확인 합니다.
 
- ![3_check_vulkan_pkg-config](/home/davidk/Desktop/vulkan_related/3_check_vulkan_pkg-config.png)
+ ![3_check_vulkan_pkg-config](/assets/vulkan_related/3_check_vulkan_pkg-config.png)
 
 
 
