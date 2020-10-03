@@ -1,3 +1,14 @@
+
+
+```
+---
+layout: post
+title:  "How to setup Vulkan DSK"
+date:   2020-10-03 11:59:35 +0900
+categories: jekyll update
+---
+```
+
 # Vulkan 설치
 
 ## 1. Vulkan 설치 환경
