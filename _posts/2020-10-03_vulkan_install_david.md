@@ -12,11 +12,11 @@ IDE 는  code-lite  를 사용합니다.
 
 현재 폴더 주소는 다음과 같습니다.
 
-![vulkan_pkg-config_location](/home/davidk/Desktop/vulkan_related/1_vulkan_pkg-config_location.png)
+![vulkan_pkg-config_location](/assets/vulkan_related/1_vulkan_pkg-config_location.png)
 
 다음으로  vulkan.pc 파일을 열어 prefix, exec_prefix를 현재 설치된 주소로 변경합니다.
 
-![](/home/davidk/Desktop/vulkan_related/2_vulakn_pc_fix.png)
+![](/assets/vulkan_related/2_vulakn_pc_fix.png)
 
 cmd 환경에서 `pkg-config --cflags --libs vulkan` 명령을 실행하여 include 파일 위치와 library 파일 위치가 제대로 설정되어 있는지 확인 합니다.
 
@@ -26,11 +26,11 @@ cmd 환경에서 `pkg-config --cflags --libs vulkan` 명령을 실행하여 incl
 
 code lite를 실행하고  vulkan 프로젝트를 만들고 settings-> linker option에서 `pkg-config --cflags --libs vulkan` 을 추가합니다.
 
- ![](/home/davidk/Desktop/vulkan_related/4_codelite_vulkan_pkg_config.png)
+ ![](/assets/vulkan_related/4_codelite_vulkan_pkg_config.png)
 
 
 
 마지막으로 예제 실행 파일이 잘 실행되는지 확인합니다.
 
-![](/home/davidk/Desktop/vulkan_related/5_codelite_vulkan_build_check.png)
+![](/assets/vulkan_related/5_codelite_vulkan_build_check.png)
 
