@@ -1,13 +1,11 @@
 
 
-```
----
 layout: post
-title:  "How to setup Vulkan DSK"
-date:   2020-10-03 11:59:35 +0900
+title:  "2020-10-03_vulkan_install_david"
+date:   2020-10-03 12:08:35 +0900
 categories: jekyll update
----
-```
+
+
 
 # Vulkan 설치
 

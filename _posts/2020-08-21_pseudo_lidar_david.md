@@ -1,3 +1,10 @@
+---
+layout: post
+title:  "2020-08-21_pseudo_lidar_david"
+date:   2020-08-21 11:59:35 +0900
+categories: jekyll update
+---
+
 # Pseudo-LiDAR from Visual Depth Estimation:Bridiging the Gap in 3D Object Detection for Automnomous Driving
 
 ## 1. Abstract
