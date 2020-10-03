@@ -183,7 +183,7 @@ validation set 경우의 pseudo-LiDAR와 LiDAR의 유사한 성능 차이에서 
 
 그림 5(Figure 5) 의 오른쪽 이미지에서 pseudo-LiDAR(파란색) 와 LiDAR(노란색)으로 표시되어 잇습니다. 이 결과에서는 pseudo-LiDAR 와 LiDAR points가 상당히 일치 하는 것으로 보입니다. 특히 pseudo-LiDAR 데이터(파란색)가 더 dense 하게 추출되어 있음을 확인 할 수 있습니다.
 
-![image-20200727133723093](/assets/img_1/image-20200727133723093.png)
+![fig_6](/assets/img_1/fig_6.png)
 
 그림 6(Figure 6)에서는 서로 다른 depth estimation (PSMNET, PSMNet* )로 depth-map을 추출한후 pseudo-LiDAR를 비교한 것입니다. PSMNet의 pseudo-LiDAR 데이터가 거리가 먼 경우에 더 큰 편차(larger deviation)를 갖고 있는 것을 확인 할 수 있습니다.
 
